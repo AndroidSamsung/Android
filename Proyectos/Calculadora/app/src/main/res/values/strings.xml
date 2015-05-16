@@ -3,4 +3,35 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!--Operaciones -->
+    <string name="buttonMas">+</string>
+    <string name="buttonMenos">-</string>
+    <string name="buttonMultiplicacion">x</string>
+    <string name="buttonDivicion">/</string>
+
+
+    <string name="buttonNegativo">+/-</string>
+    <string name="buttonDecimal">.</string>
+    <string name="buttonClear">C</string>
+    <string name="buttonIgual">=</string>
+
+    <!--Memorias -->
+    <string name="buttonMemC">MC</string>
+    <string name="buttonMemMas">M+</string>
+    <string name="buttonMemMenos">M-</string>
+    <string name="buttonMemReset">MR</string>
+
+   <!--Numeros -->
+    <string name="buttonNumer0">0</string>
+    <string name="buttonNumer1">1</string>
+    <string name="buttonNumer2">2</string>
+    <string name="buttonNumer3">3</string>
+    <string name="buttonNumer4">4</string>
+    <string name="buttonNumer5">5</string>
+    <string name="buttonNumer6">6</string>
+    <string name="buttonNumer7">7</string>
+    <string name="buttonNumer8">8</string>
+    <string name="buttonNumer9">9</string>
+
+
 </resources>
