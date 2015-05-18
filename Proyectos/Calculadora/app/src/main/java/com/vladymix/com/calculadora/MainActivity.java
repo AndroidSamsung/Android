@@ -17,23 +17,32 @@ public class MainActivity extends Activity {
     private TextView resultdisplay;
     Double men;
     Boolean typed;
+private final String STATE_RESUTL ="Valor tfdisplay";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-
         setContentView(R.layout.activity_main);
-
-        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.barratitulo);
-
 
         miCalculadora = new MiCalculadora();
         miCalculadora.setTypedcomplete(true);
+
         tfDisplay = (TextView)findViewById(R.id.tfdisplay);
         resultdisplay = (TextView)findViewById(R.id.resultdisplay);
 
         vib = (Vibrator) getSystemService(getApplicationContext().VIBRATOR_SERVICE);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle saveInstance){
+        super.onSaveInstanceState(saveInstance);
+        saveInstance.putString(STATE_RESUTL, tfDisplay.getText().toString());
+
+    }
+
+    @Override
+    public void onRestoreInstanceState (Bundle saveInstance){
+        tfDisplay.setText(saveInstance.getString(STATE_RESUTL));
     }
 
     public void eventoButtonNumero (View v){
