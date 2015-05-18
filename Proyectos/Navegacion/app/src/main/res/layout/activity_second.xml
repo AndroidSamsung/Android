@@ -11,4 +11,23 @@
         android:textSize="45dp"
         android:id="@+id/txbrecived" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/textalgo"
+        android:layout_below="@+id/txbrecived"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_below="@+id/textalgo"
+        android:layout_alignEnd="@+id/textalgo"
+        android:onClick="gotoactivity1" />
+
 </RelativeLayout>

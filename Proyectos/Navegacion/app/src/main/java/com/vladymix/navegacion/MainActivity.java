@@ -15,6 +15,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView v = (TextView)findViewById(R.id.textView2);
+
+        Intent i = getIntent();
+        if(i!=null)
+        v.setText(i.getStringExtra("VALOR2"));
     }
 public void gotoactivity2(View v ){
         Intent i = new Intent(this, second.class);
