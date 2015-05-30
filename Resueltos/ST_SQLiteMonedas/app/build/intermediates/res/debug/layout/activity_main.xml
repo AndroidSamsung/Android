@@ -1,0 +1,200 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/etqRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/moneda"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/monedaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:maxLength="3"
+                android:textAllCaps="true" >
+
+                <requestFocus />
+            </EditText>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/ratio"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/ratioText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/cero"
+                android:inputType="numberDecimal" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/bandera"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/banderaText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="8"
+                    android:hint="@string/cero"
+                    android:inputType="number"
+                    android:enabled="false" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/banderaView"
+                    android:src="@drawable/eur_flag"
+                    android:layout_gravity="right"
+                    android:onClick="elegirBandera" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+	    <LinearLayout
+	        android:id="@+id/botonesMovimiento"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal" >
+
+	        <ImageButton
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/btn_default_small"
+	            android:onClick="irPrimero"
+	            android:src="@android:drawable/ic_media_previous" />
+
+
+	    <ImageButton
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@android:drawable/btn_default_small"
+	        android:onClick="irAnterior"
+	        android:src="@android:drawable/ic_media_rew" />
+	
+	    <ImageButton
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@android:drawable/btn_default_small"
+	        android:onClick="irSiguiente"
+	        android:src="@android:drawable/ic_media_ff" />
+	
+	    <ImageButton
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@android:drawable/btn_default_small"
+	        android:onClick="irUltimo"
+	        android:src="@android:drawable/ic_media_next" />
+	    
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botonesPrincipales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:onClick="prepararInsercion"
+            android:text="@string/insertar" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:onClick="borrarRegistro"
+            android:text="@string/borrar" />
+
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.23"
+            android:enabled="false"
+            android:onClick="actualizarRegistro"
+            android:text="@string/actualizar" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/botonesInsertar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" 
+        android:visibility="gone" >
+        
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insertarRegistro"
+            android:text="@string/insertar" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="cancelarInsercion"
+            android:text="@string/cancelar" />
+
+    </LinearLayout>
+    	    
+</LinearLayout><!-- From: file:/C:/Github/Samsung/Android/Resultos/ST_SQLiteMonedas/app/src/main/res/layout/activity_main.xml -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/exchange_icon" 
+          android:title="@string/etq_menu" 
+          android:showAsAction="ifRoom|withText"
+          android:id="@+id/money_exchange" 
+          android:onClick="listarDivisas"/>
+    <item android:title="@string/etq_configurar" 
+          android:showAsAction="never"
+          android:id="@+id/settings" 
+          android:onClick="verConfiguracion"/>
+</menu>
+<!-- From: file:/C:/Github/Samsung/Android/Resultos/ConversorDivisas/app/src/main/res/menu/menu.xml -->

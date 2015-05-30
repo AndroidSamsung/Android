@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etq_euro"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/txtEuros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/etq_cero"
+                android:inputType="numberDecimal"
+                android:digits="0123456789.,"
+                tools:ignore="LabelFor" >
+
+                <requestFocus />
+            </EditText>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/etqDivisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/etq_divisa"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/txtDivisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/etq_cero"
+                android:inputType="numberDecimal"
+                tools:ignore="LabelFor" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow android:layout_width="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/eur_flag"
+                android:onClick="aEuros"
+                android:text="@string/etq_euro"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/botonDivisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/usd_flag"
+                android:onClick="aDivisa"
+                android:text="@string/etq_divisa"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+
+        <TableRow android:layout_width="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="limpiar"
+                android:text="@string/btn_limpiar"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="salir"
+                android:text="@string/btn_salir"
+                tools:ignore="ButtonStyle" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+<!-- From: file:/C:/Github/Samsung/Android/Resultos/ConversorDivisas/app/src/main/res/layout/activity_main.xml -->

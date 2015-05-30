@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Github/Samsung/Android/Resultos/ST_SQLiteMonedas/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Github/Samsung/Android/Resultos/ST_SQLiteMonedas/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Settings</string>
+    <string name="actualizar">actualizar</string>
+    <string name="app_name">SQL Monedas</string>
+    <string name="bandera">bandera</string>
+    <string name="borrar">borrar</string>
+    <string name="cancelar">cancelar</string>
+    <string name="cero">0</string>
+    <string name="escribir_datos">escribir</string>
+    <string name="etq_bandera_title">Elige una bandera</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="insertar">insertar</string>
+    <string name="leer_datos">leer</string>
+    <string name="moneda">moneda</string>
+    <string name="ratio">ratio</string>
+    <string name="salida_log">[Fila_%1$02d]: %2$-3s, %3$.2f, %4$3d</string>
+    <string name="title_activity_grid_flags">Flags</string>
+    <!-- From: file:/C:/Github/Samsung/Android/Resultos/ST_SQLiteMonedas/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>
