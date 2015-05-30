@@ -5,9 +5,13 @@
 
         android:showAsAction="never"
         android:onClick="loadListFromSQLite"/>
+
     <item android:title="load from XML"
+        android:icon="@drawable/circle_aud"
         android:showAsAction="never"
         android:onClick="loadListFromXML"/>
+
+
     <item android:title="save XML to sqlite"
         android:showAsAction="never"
         android:onClick="savetoSQLite"/>

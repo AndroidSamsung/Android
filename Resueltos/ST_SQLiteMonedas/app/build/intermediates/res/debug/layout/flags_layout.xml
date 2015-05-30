@@ -25,4 +25,4 @@
         android:stretchMode="columnWidth"
         android:id="@+id/gridView"
         android:layout_margin="10dp" />
-</LinearLayout><!-- From: file:/C:/Github/Samsung/Android/Resultos/ST_SQLiteMonedas/app/src/main/res/layout/flags_layout.xml -->
+</LinearLayout><!-- From: file:/C:/Github/Samsung/Android/Resueltos/ST_SQLiteMonedas/app/src/main/res/layout/flags_layout.xml -->

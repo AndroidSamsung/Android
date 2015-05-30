@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textFilter"
-        android:hint="Filtro de cambios" />
+        android:hint="Filtro de cambios"
+        android:textColor="@color/solid_primary" />
 
     <TextView
         android:layout_width="fill_parent"

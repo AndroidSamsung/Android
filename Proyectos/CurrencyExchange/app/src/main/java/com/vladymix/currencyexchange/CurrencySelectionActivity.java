@@ -1,21 +1,24 @@
 package com.vladymix.currencyexchange;
 
-import android.app.Activity;
+
 import android.app.ListActivity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
+import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +29,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -44,29 +45,40 @@ public class CurrencySelectionActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency_selection);
 
+        loadDBSQLITE();
+
         STATICVALUE.loadlista();
 
-        setListAdapter(getListAdapter());
+        setListAdapter(getlistAdapter());
 
-        //loadDBSQLITE();
 
     }
 
+
+    //region SQLITE
     public void loadDBSQLITE(){
-        //obtenemos un helper para majejar la base de datos 'DBRates'
-        CurrencySQLite ratesHelper =
-                new  CurrencySQLite(this, "DBRates.db", null, 1);
-               //Abrimos la base de datos 'DBRates' en modo escritura
+        try {
+            //obtenemos un helper para majejar la base de datos 'DBRates'
+            CurrencySQLite ratesHelper = new CurrencySQLite(this, "DBRates.db", null, 1);
+            //Abrimos la base de datos 'DBRates' en modo escritura
+            db = ratesHelper.getWritableDatabase();
 
-        db = ratesHelper.getWritableDatabase();
+        }
+        catch (Exception ex){
+            PushMensaje(ex.getMessage());
+        }
+    }
 
-        db.execSQL("DELETE FROM infoRates");
+    public void deleteTable(String table){
+        CurrencySQLite.deleteTable(table, db);
     }
 
     private Cursor getRatesCursor(){
-        Cursor cursor = db.rawQuery("SELECT * FROM infoRates", null);
-        return cursor;
+       return CurrencySQLite.getDatos(db);
     }
+
+    //endregion
+
 
     @Override
     protected void onDestroy() {
@@ -83,10 +95,44 @@ public class CurrencySelectionActivity extends ListActivity {
         super.onDestroy();
     }
 
+    public void loadXMLCurrencys(){
+        final String TAG = " [readXMLRatesFileIntoArrayList] ";
+
+        Document doc = null;
+        try {
+            InputStream source = getResources().openRawResource(R.raw.eurofxref);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            dbf.setIgnoringElementContentWhitespace(true);
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(source);
+        } catch (IOException e) {
+            Log.d(TAG, e.getMessage());
+        } catch (ParserConfigurationException e) {
+            Log.d(TAG, e.getMessage());
+        } catch (SAXException e) {
+            Log.d(TAG, e.getMessage());
+        }
+        NodeList listaCube = doc.getElementsByTagName("Cube");
+
+        Element elemento;
+        for(int i=2; i<listaCube.getLength(); i++) {
+            elemento = (Element) listaCube.item(i);
+            int pos = STATICVALUE.getPositionPaisbyCurecny(elemento.getAttribute("currency"));
+            if(pos !=-1){
+                Pais mod = STATICVALUE.ListaPaises.get(pos);
+                mod.setValueCurrency(Double.valueOf(elemento.getAttribute("rate")));
+                STATICVALUE.ListaPaises.set(pos, mod);
+            }
+        }
+        PushMensaje("Load XML");
+    }
+
     public void saveXMTtoSQLITE(){
 
-
         try{
+            loadXMLCurrencys();
+            deleteTable(CurrencySQLite.TABLE_NAME); //Remplazar con update
+
             for(Pais item : STATICVALUE.ListaPaises){
                 ContentValues values = new ContentValues();
                 values.put("moneda", item.getCurrency());
@@ -95,20 +141,16 @@ public class CurrencySelectionActivity extends ListActivity {
                 values.put("ratio", item.getValueCurrency());
                 values.put("bandera", item.getIdflag());
                 values.put("banderacircle", item.getIdcircle());
-                if(item.getCurrency()!="")
-                     db.insertOrThrow("infocurrencys",null,values);
+                CurrencySQLite.insertValues(values, db);
             }
-            datos= getRatesCursor();
-            Toast.makeText(this, "Registro "+datos.getCount()+" añadido", Toast.LENGTH_SHORT).show();
-
-        }catch (Exception e){
+        }
+        catch (Exception e){
             Toast.makeText(this, "Fallo al insertar: " + e.getMessage(), Toast.LENGTH_LONG).show();
             Log.w("SQLite ratesInfo", "Fallo al insertar: " + e.getMessage());
-
         }
     }
 
-    public ArrayAdapter<Pais> getListAdapter(){
+    public ArrayAdapter<Pais> getlistAdapter(){
 
         ArrayAdapter<Pais> adaptadorFicheroDatos = new ArrayAdapter<Pais>(
                         this,
@@ -158,55 +200,43 @@ public class CurrencySelectionActivity extends ListActivity {
 
     public void loadListFromSQLite(MenuItem menuItem){
 
+        String[] from = {"pais",   "nombremoneda",    "ratio",           "moneda",    "banderacircle"};
+        int[] to = {R.id.vPais, R.id.vNameCurrency, R.id.vValueCurrency, R.id.vCurrency, R.id.vFlag};
 
-        Toast.makeText(this, "Loaded from SQLite", Toast.LENGTH_SHORT).show();
+        datos = CurrencySQLite.getDatos(db);
 
+        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(
+                this, R.layout.view_item_currency, datos, from, to, 0);
+
+        adaptador.setFilterQueryProvider(new FilterQueryProvider() {
+            public Cursor runQuery(CharSequence constraint) {
+                return CurrencySQLite.getDatosByFilter(constraint.toString(),db);
+            }
+        });
+
+        getListView().setTextFilterEnabled(true);
+
+        setListAdapter(adaptador);
+
+        EditText busqueda = (EditText)findViewById(R.id.textFilter);
+
+        busqueda.addTextChangedListener(new WatcherText());
+
+        PushMensaje("Load list from SQlite");
     }
-    public void savetoSQLite(MenuItem menuItem){
 
+    public void savetoSQLite(MenuItem menuItem){
         saveXMTtoSQLITE();
+        datos= getRatesCursor();
+        PushMensaje("Registros " + datos.getCount() + " añadidos");
     }
 
     public void loadListFromXML(MenuItem menuItem){
 
-        final String TAG = " [readXMLRatesFileIntoArrayList] ";
-
-        Document doc = null;
-        try {
-            InputStream source = getResources().openRawResource(R.raw.eurofxref);
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            dbf.setIgnoringElementContentWhitespace(true);
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            doc = db.parse(source);
-        } catch (IOException e) {
-            Log.d(TAG, e.getMessage());
-        } catch (ParserConfigurationException e) {
-            Log.d(TAG, e.getMessage());
-        } catch (SAXException e) {
-            Log.d(TAG, e.getMessage());
-        }
-        NodeList listaCube = doc.getElementsByTagName("Cube");
-
-        Element elemento;
-        for(int i=2; i<listaCube.getLength(); i++) {
-            elemento = (Element) listaCube.item(i);
-           int pos = STATICVALUE.getPositionPaisbyCurecny(elemento.getAttribute("currency"));
-            if(pos !=-1){
-                Pais mod = STATICVALUE.ListaPaises.get(pos);
-                mod.setValueCurrency(Double.valueOf(elemento.getAttribute("rate")));
-                STATICVALUE.ListaPaises.set(pos, mod);
-            }
-        }
-
-        Toast.makeText(this, "Loaded from XML", Toast.LENGTH_SHORT).show();
-
-        setListAdapter(getListAdapter());
-
+        loadXMLCurrencys();
+        PushMensaje("Load list from XML");
+        setListAdapter(getlistAdapter());
     }
-
-
-
-
 
     public static final class ViewHolder{
         TextView vPais;
@@ -218,5 +248,25 @@ public class CurrencySelectionActivity extends ListActivity {
 
     }
 
+    public void PushMensaje(String mensaje){
+        Toast.makeText(this,mensaje,Toast.LENGTH_SHORT ).show();
+    }
 
+    public class WatcherText implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            ((Filterable) getListAdapter()).getFilter().filter(s);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    }
 }

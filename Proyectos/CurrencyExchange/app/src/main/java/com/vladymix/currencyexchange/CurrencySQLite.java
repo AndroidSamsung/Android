@@ -1,6 +1,8 @@
 package com.vladymix.currencyexchange;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -10,7 +12,7 @@ import android.widget.Toast;
  */
 public class CurrencySQLite  extends SQLiteOpenHelper{
     public static final int DATABASE_VERSION = 1;
-    public static final String TABLE_NAME = "infoRates";
+    public static final String TABLE_NAME = "infoCurrencys";
 
 
     private static final String TABLE_CREATE =
@@ -20,7 +22,7 @@ public class CurrencySQLite  extends SQLiteOpenHelper{
                     "pais VARCHAR(80) NOT NULL ,"+
                     "nombremoneda VARCHAR(150) NOT NULL,"+
                     "ratio REAL DEFAULT '0' NOT NULL,"+
-                    "bandera INTEGER DEFAULT '0' NOT NULL),"+
+                    "bandera INTEGER DEFAULT '0' NOT NULL,"+
                     "banderacircle INTEGER DEFAULT '0' NOT NULL)";
 
     public CurrencySQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -30,12 +32,7 @@ public class CurrencySQLite  extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try {
             db.execSQL(TABLE_CREATE);
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
     }
 
     @Override
@@ -52,5 +49,39 @@ public class CurrencySQLite  extends SQLiteOpenHelper{
 
         //Se crea la nueva versión de la tabla
         db.execSQL(TABLE_CREATE);
+    }
+
+
+    public static boolean deleteTable(String Table,SQLiteDatabase db ){
+
+        try{
+            db.execSQL("DELETE FROM "+CurrencySQLite.TABLE_NAME);
+            return true;
+        }
+        catch (Exception ex){
+            return false;
+        }
+
+    }
+
+    public static boolean insertValues(ContentValues values, SQLiteDatabase db){
+        try {
+            db.insertOrThrow(CurrencySQLite.TABLE_NAME, null, values);
+            return true;
+        }
+        catch (Exception ex){
+            return false;
+        }
+    }
+
+    public static Cursor getDatosByFilter(String filtro, SQLiteDatabase db){
+        String[] campos = {"_id","pais", "nombremoneda","ratio", "moneda", "banderacircle"};
+        String where = "moneda like ?";
+        String[] argumentos = {filtro+"%"};
+        return db.query(CurrencySQLite.TABLE_NAME, campos, where, argumentos, null, null, null, null);
+    }
+
+    public static Cursor getDatos(SQLiteDatabase db){
+       return db.rawQuery("SELECT * FROM "+CurrencySQLite.TABLE_NAME, null);
     }
 }

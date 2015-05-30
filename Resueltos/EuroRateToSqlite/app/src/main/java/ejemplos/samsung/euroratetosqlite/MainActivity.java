@@ -50,6 +50,7 @@ public class MainActivity extends ListActivity {
 
         //Abrimos la base de datos 'DBRates' en modo escritura
         db = ratesHelper.getWritableDatabase();
+
         db.execSQL("DELETE FROM infoRates");
         fromXMLtoSQLite();
 
@@ -66,10 +67,13 @@ public class MainActivity extends ListActivity {
                 return recuperarDatos(constraint.toString());
             }
         });
+
         getListView().setTextFilterEnabled(true);
+
         setListAdapter(adaptador);
 
         EditText busqueda = (EditText)findViewById(R.id.busqueda);
+
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
