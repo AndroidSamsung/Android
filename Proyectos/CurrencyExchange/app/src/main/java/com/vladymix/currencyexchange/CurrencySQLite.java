@@ -16,7 +16,7 @@ public class CurrencySQLite  extends SQLiteOpenHelper{
 
 
     private static final String TABLE_CREATE =
-            "CREATE TABLE "+TABLE_NAME+" ("+
+                    "CREATE TABLE "+TABLE_NAME+" ("+
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
                     "moneda VARCHAR(3) NOT NULL,"+
                     "pais VARCHAR(80) NOT NULL ,"+
@@ -37,17 +37,17 @@ public class CurrencySQLite  extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //NOTA: Por simplicidad del ejemplo aquí utilizamos directamente
-        //      la opción de eliminar la tabla anterior y crearla de nuevo
-        //      vacía con el nuevo formato.
-        //      Sin embargo lo normal será que haya que migrar datos de la
-        //      tabla antigua a la nueva, por lo que este método debería
-        //      ser más elaborado.
+        //NOTA: Por simplicidad del ejemplo aqui utilizamos directamente
+        //      la opcion de eliminar la tabla anterior y crearla de nuevo
+        //      vacia con el nuevo formato.
+        //      Sin embargo lo normal sera que haya que migrar datos de la
+        //      tabla antigua a la nueva, por lo que este metodo deberia
+        //      ser mas elaborado.
 
-        //Se elimina la versión anterior de la tabla
+        //Se elimina la version anterior de la tabla
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
 
-        //Se crea la nueva versión de la tabla
+        //Se crea la nueva version de la tabla
         db.execSQL(TABLE_CREATE);
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Github/Samsung/Android/Resultos/ConversorDivisas/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Github/Samsung/Android/Resueltos/ConversorDivisas/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="separatorEntries">
         <item>punto</item>
@@ -31,7 +31,7 @@
     <string name="separator_title">Separador decimal</string>
     <string name="sin_datos">Sin divisas…</string>
     <string name="title_activity_list">Listado de Divisas</string>
-    <!-- From: file:/C:/Github/Samsung/Android/Resultos/ConversorDivisas/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Github/Samsung/Android/Resueltos/ConversorDivisas/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--

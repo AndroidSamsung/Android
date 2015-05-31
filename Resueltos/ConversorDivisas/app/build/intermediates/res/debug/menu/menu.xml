@@ -10,4 +10,4 @@
           android:id="@+id/settings" 
           android:onClick="verConfiguracion"/>
 </menu>
-<!-- From: file:/C:/Github/Samsung/Android/Resultos/ConversorDivisas/app/src/main/res/menu/menu.xml -->
+<!-- From: file:/C:/Github/Samsung/Android/Resueltos/ConversorDivisas/app/src/main/res/menu/menu.xml -->

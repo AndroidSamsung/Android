@@ -5,6 +5,8 @@
         android:orderInCategory="100"
         android:showAsAction="never" />
     <item android:title="Currencys"
+        android:showAsAction="ifRoom|withText"
         android:onClick="selecctionCurrency"
+        android:icon="@drawable/exchange_icon"
         />
 </menu>
