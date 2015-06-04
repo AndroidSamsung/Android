@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:onClick="lanzarTarea"
+        android:text="@string/lanzarTarea" />
+
+</LinearLayout>
+<!-- From: file:/C:/Github/Samsung/Android/Resueltos/AT_TareaAsincrona/app/src/main/res/layout/activity_tarea_asincrona.xml -->

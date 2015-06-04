@@ -15,4 +15,7 @@
     <item android:title="save XML to sqlite"
         android:showAsAction="never"
         android:onClick="savetoSQLite"/>
+    <item android:title="Load URL XML"
+        android:showAsAction="never"
+        android:onClick="loadURL"/>
 </menu>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vladymix.currencyexchange" >
-    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +22,11 @@
         <activity
             android:name=".CurrencySelectionActivity"
             android:label="@string/title_activity_currency_selection" >
+        </activity>
+        <activity android:name=".SetPreferencesActivity" />
+        <activity
+            android:name=".AddDivisaActivity"
+            android:label="@string/title_activity_add_divisa" >
         </activity>
     </application>
 

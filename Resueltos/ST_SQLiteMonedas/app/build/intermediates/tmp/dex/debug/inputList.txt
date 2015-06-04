@@ -1,1 +1,1 @@
-C:\Github\Samsung\Android\Resultos\ST_SQLiteMonedas\app\build\intermediates\classes\debug
+C:\Github\Samsung\Android\Resueltos\ST_SQLiteMonedas\app\build\intermediates\classes\debug

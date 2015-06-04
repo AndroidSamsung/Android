@@ -3,10 +3,15 @@
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        android:showAsAction="never"
+        android:onClick="verConfiguracion"/>
+    <item android:title="@string/lb_add_item"
+        android:onClick="addRegistro"></item>
+
     <item android:title="Currencys"
         android:showAsAction="ifRoom|withText"
         android:onClick="selecctionCurrency"
         android:icon="@drawable/exchange_icon"
         />
+
 </menu>

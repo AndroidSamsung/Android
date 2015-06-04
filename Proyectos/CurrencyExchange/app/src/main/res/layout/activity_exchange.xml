@@ -7,6 +7,16 @@
     android:orientation="vertical"
     android:background="@drawable/fondo_currency">
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="DATE"
+        android:id="@+id/textView"
+        android:gravity="center_horizontal"
+        android:textColor="@color/solid_primary" />
+    <View style="@style/line_div" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,47 +41,54 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textview2"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textColor="@color/solid_black" />
 
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/input_euros"
                 android:hint="0.000"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:id="@+id/imageButton"
-                style="@style/Button_circle"
-                android:src="@drawable/arror_change"
-                android:scaleType="fitXY"
-                android:onClick="changeDirection" />
+                android:layout_height="45dp"
+                android:id="@+id/image_arrow"
+                android:src="@drawable/arrow_rigth"
+                android:layout_marginBottom="20dp"
+                android:onClick="changeDirection"
+                android:layout_gravity="center_horizontal" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="EUR/DIV"
-                android:id="@+id/textView4"
-                android:textColor="@color/solid_primary" />
+                android:id="@+id/label_dirrection"
+                android:textColor="@color/solid_primary"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="0"
-                android:id="@+id/textView2"
-                android:gravity="center" />
+                android:id="@+id/total_cambio"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="@color/solid_black" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -84,30 +101,43 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="90dp"
-                android:id="@+id/imageView2"
+                android:id="@+id/divisaFlag"
                 android:src="@drawable/flag_empty" />
 
             <TextView
-                android:text="Euro"
+                android:text="DIV"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:id="@+id/divisaCurrency" />
 
             <TextView
-                android:text="1 €"
+                android:text="0"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:gravity="center_horizontal" />
+                android:id="@+id/divisaValorMoneda"
+                android:gravity="center_horizontal"
+                android:textColor="@color/solid_black" />
 
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText2"
+                android:id="@+id/input_divisa"
                 android:hint="0.000"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
     </RelativeLayout>
+
+    <ImageButton
+        style="@style/Button_circle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageButton2"
+        android:src="@drawable/bag_currency"
+        android:scaleType="fitXY"
+        android:onClick="calculateExchange"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

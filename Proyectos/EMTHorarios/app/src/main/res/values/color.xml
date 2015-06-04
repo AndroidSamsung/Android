@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="solid_primary">#ff0279d7</color>
+    <color name="solid_primary_dark">#ff0251a1</color>
+    <color name="solid_while">#FFF</color>
+    <color name="solid_dark">#000</color>
+</resources>

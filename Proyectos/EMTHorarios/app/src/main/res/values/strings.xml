@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">EMT Horarios</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_lineas">Lineas</string>
+    <string name="lb_ubicacion">Ubicación</string>
+    <string name="lb_empty_lines">No se encontraron lineas</string>
+
+    <string name="lb_lineas">Lineas</string>
+    <string name="lb_paradas">Paradas</string>
+    <string name="title_activity_info_line">Obtener información</string>
+    <string name="change_direccion">Cambiar dirección</string>
+    <string name="direction_code"> → </string>
+    <string name="title_activity_arriveds">Tiempos de espera</string>
+    <string name="lb_lineas_parada">Lineas en esta parada</string>
+    <string name="lb_tiempo_llegada">Tiempo de llegada</string>
+    <string name="lb_minutos">minutos</string>
+    <string name="lb_inmediaciones">en las inmediaciones</string>
+    <string name="title_activity_paradas">ParadasActivity</string>
+    <string name="lb_filter_stops">Ingrese número de parada</string>
+    <string name="empty_stops">No se han encontrado paradas</string>
+    <string name="lb_name">Nombre</string>
+    <string name="lb_filter_line">Buscar linea</string>
+    <string name="title_activity_rute_maps">Map</string>
+
+    <string name="msn_getStops">Cargando paradas</string>
+
+</resources>

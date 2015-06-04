@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class CurrencySQLite  extends SQLiteOpenHelper{
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "infoCurrencys";
+    public static final String BDD_NAME = "DBRates.db";
 
 
     private static final String TABLE_CREATE =

@@ -113,6 +113,7 @@ public class ListaDivisasActivity extends ListActivity {
 		}; 
 
 		rateInfoList = readRatesFileIntoRateInfoList();
+
 		ArrayAdapter<RateInfo> adaptadorFicheroDatos2 = 
 			new ArrayAdapter<RateInfo>(
 					this, 

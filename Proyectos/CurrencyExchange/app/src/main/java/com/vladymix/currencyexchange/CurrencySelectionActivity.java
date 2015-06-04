@@ -2,7 +2,9 @@ package com.vladymix.currencyexchange;
 
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -37,6 +41,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class CurrencySelectionActivity extends ListActivity {
 
+    public static Document document;
     private SQLiteDatabase db;
     private Cursor datos;
 
@@ -50,8 +55,15 @@ public class CurrencySelectionActivity extends ListActivity {
         STATICVALUE.loadlista();
 
         setListAdapter(getlistAdapter());
+    }
 
-
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        ViewHolder info = (ViewHolder)v.getTag();
+        Intent i = new Intent();
+        i.putExtra(FINALVALUE.PAIS, info.vPais.getText().toString());
+        setResult(RESULT_OK, i);
+        finish();
     }
 
 
@@ -117,7 +129,7 @@ public class CurrencySelectionActivity extends ListActivity {
         Element elemento;
         for(int i=2; i<listaCube.getLength(); i++) {
             elemento = (Element) listaCube.item(i);
-            int pos = STATICVALUE.getPositionPaisbyCurecny(elemento.getAttribute("currency"));
+            int pos = STATICVALUE.getPositionPaisbyCurrecny(elemento.getAttribute("currency"));
             if(pos !=-1){
                 Pais mod = STATICVALUE.ListaPaises.get(pos);
                 mod.setValueCurrency(Double.valueOf(elemento.getAttribute("rate")));
@@ -267,6 +279,45 @@ public class CurrencySelectionActivity extends ListActivity {
         @Override
         public void afterTextChanged(Editable s) {
 
+        }
+    }
+
+
+    public void loadURL(MenuItem menuItem) throws InterruptedException, ExecutionException {
+
+        ProgressDialog progressDialog = new ProgressDialog(CurrencySelectionActivity.this);
+        progressDialog.setMessage("Leyendo URL Currencys Euro");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(false);
+
+        TareaAsincrona tareaAsincrona = new TareaAsincrona(new Callback());
+        tareaAsincrona.setProgressDialog(progressDialog);
+        tareaAsincrona.execute();
+    }
+
+
+    public class Callback implements ResultadosURL {
+        @Override
+        public void onTaskCompleted(Document document) {
+            // do something with result here!
+            if (document != null) {
+                NodeList listaCube = document.getElementsByTagName("Cube");
+
+                Element elemento;
+                for (int i = 2; i < listaCube.getLength(); i++) {
+                    elemento = (Element) listaCube.item(i);
+                    String currency = elemento.getAttribute("currency");
+                    int pos = STATICVALUE.getPositionPaisbyCurrecny(currency);
+                    if (pos != -1) {
+                        Pais mod = STATICVALUE.ListaPaises.get(pos);
+                        mod.setValueCurrency(Double.valueOf(elemento.getAttribute("rate")));
+                        STATICVALUE.ListaPaises.set(pos, mod);
+                    }
+                }
+                setListAdapter(getlistAdapter());
+                PushMensaje("With callback");
+
+            }
         }
     }
 }

@@ -4,4 +4,27 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_currency_selection">Seleccione tipo de cambio</string>
+
+
+    <!-- Preferences Screem -->
+
+    <string name="tittle_decimal">Número de decimales</string>
+    <string name="summary_decimal">Seleccione el número de decimales a utilizar</string>
+
+    <string name="tittle_checbox_divisa">Moneda de preferencia</string>
+    <string name="summary_checbox_divisa">Empezar con una moneda preferente</string>
+
+    <string name="tittle_list">Selecione una moneda</string>
+    <string name="sumary_list">Selecione una moneda disponible</string>
+    <string name="title_activity_add_divisa">Añadir divisa</string>
+    <string name="lb_Pais">Pais</string>
+    <string name="lb_nombremoneda">Nombre de la moneda</string>
+    <string name="lb_valorMoneda">Ratio de moneda</string>
+    <string name="lb_Selection_flag_circle">Seleccione bandera circular</string>
+    <string name="lb_id_recurso">ID RECURSO</string>
+    <string name="lb_selection_flag">Seleccione la bandera</string>
+    <string name="lb_add_item">Añadir</string>
+    <string name="lb_limpiar">Limpiar</string>
+    <string name="lb_code_moneda">Código moneda</string>
+
 </resources>

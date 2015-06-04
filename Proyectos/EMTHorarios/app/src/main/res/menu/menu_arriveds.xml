@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.vladymix.emthorarios.ArrivedsActivity">
+    <item android:id="@+id/action_settings"
+        android:title="Actualizar"
+        android:icon="@drawable/applicationbar_reload"
+        android:showAsAction="ifRoom|withText"
+        android:onClick="updateTimes"/>
+</menu>

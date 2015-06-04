@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Configuracion Currency Exchange">
+
+        <EditTextPreference
+            android:inputType="number"
+            android:maxLength="1"
+            android:defaultValue="4"
+            android:key="decimal_digits_preference"
+            android:title="@string/tittle_decimal"
+            android:summary="@string/summary_decimal"
+            android:dialogTitle="@string/tittle_decimal" />
+        <CheckBoxPreference
+            android:key="startfavorite"
+            android:title="@string/tittle_checbox_divisa"
+            android:summary="@string/summary_checbox_divisa">
+        </CheckBoxPreference>
+        <ListPreference
+            android:dependency="startfavorite"
+            android:key="favoritecurrency"
+            android:defaultValue="USD"
+            android:entries="@array/values_divisa"
+            android:entryValues="@array/values_divisa"
+            android:title="@string/tittle_list"
+            android:summary="@string/sumary_list"
+            android:dialogTitle="@string/tittle_list"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

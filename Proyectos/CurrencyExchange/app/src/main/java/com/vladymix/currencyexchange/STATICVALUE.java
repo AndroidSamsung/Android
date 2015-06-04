@@ -43,11 +43,11 @@ public class STATICVALUE {
         else return -1;
         return -1;
     }
-    public static int getPositionPaisbyCurecny(String currency){
+    public static int getPositionPaisbyCurrecny(String currency){
         int i=0;
         if(ListaPaises!=null){
             for(Pais item : ListaPaises){
-                if(item.getNameCurrency().equals(currency.toUpperCase()))
+                if(item.getCurrency().equals(currency.toUpperCase()))
                     return i;
                 i++;
             }
