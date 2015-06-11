@@ -11,7 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.vladymix.emthorarios.utils.BDD;
+import com.vladymix.emthorarios.utils.Favorito;
 import com.vladymix.emthorarios.utils.Parada;
 import com.vladymix.emthorarios.utils.ProcessAsync;
 import com.vladymix.emthorarios.utils.ResultadosURL;
@@ -29,6 +32,7 @@ public class InfoLineActivity extends ListActivity  {
     private List<Parada> paradas;
     String direccion="1";
     String label,line,namea,nameb;
+    BDD bdd;
 
     public static class ViewHolder{
         TextView visr_node;
@@ -45,6 +49,7 @@ public class InfoLineActivity extends ListActivity  {
                 if(convertView == null){
                     holder = new ViewHolder();
                     convertView = getLayoutInflater().inflate(R.layout.view_item_stop,null);
+
                     holder.visr_node = (TextView)convertView.findViewById(R.id.visr_idstop);
                     holder.visr_name =(TextView)convertView.findViewById(R.id.visr_location);
                     convertView.setTag(holder);
@@ -69,18 +74,16 @@ public class InfoLineActivity extends ListActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_line);
         loadIntent();
-
+        bdd = BDD.getInstance();
+        bdd.setContext(this);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        ViewHolder info = (ViewHolder)v.getTag();
         Intent i = new Intent(this, ArrivedsActivity.class);
         Parada p = paradas.get(position);
-
         i.putExtra(FINALVALUE.STOP_NAME, p.getName());
         i.putExtra(FINALVALUE.STOP_IDSTOP, p.getNode());
-
         startActivity(i);
     }
 
@@ -114,6 +117,49 @@ public class InfoLineActivity extends ListActivity  {
         getMenuInflater().inflate(R.menu.menu_info_line, menu);
         return true;
     }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        Boolean exits = bdd.existLine(label);
+        if(exits) {
+            if( menu.findItem(R.id.menu_remove)==null){
+                menu.add(Menu.NONE, R.id.menu_remove, Menu.NONE, getString(R.string.lb_removefavorito));
+                menu.removeItem(R.id.menu_add);
+            }
+        }
+        else {
+            if(menu.findItem(R.id.menu_remove)!=null)
+                menu.removeItem(R.id.menu_remove);
+            if(menu.findItem(R.id.menu_add)==null)
+                menu.add(Menu.NONE, R.id.menu_add, Menu.NONE, getString(R.string.lb_addfavorito));
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_remove:
+                if(bdd.deleteLine(label))
+                    Toast.makeText(this,"Elemento eliminado", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.menu_add:
+                if(!label.equals("") && !namea.equals("") && !nameb.equals(""));
+                {
+                    BDD bdd = BDD.getInstance();
+                    bdd.setContext(this);
+                    if (bdd.AgregarFavorito(new Favorito("Line", label, namea + "-" + nameb, "Favorite Stop"))) {
+                        Toast.makeText(this, "Agregado correctamente", Toast.LENGTH_LONG).show();
+                    }
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
     public void changeDireccion(MenuItem menuItem){
         if(direccion.equals("1")){
@@ -122,8 +168,9 @@ public class InfoLineActivity extends ListActivity  {
         else{
             direccion="1";
         }
-        getInfoRute(line,direccion);
+        getInfoRute(line, direccion);
     }
+
 
     public class llamadaURL implements ResultadosURL {
         /*

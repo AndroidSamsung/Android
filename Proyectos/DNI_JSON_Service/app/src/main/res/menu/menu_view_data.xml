@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.fabricio.dnijson.ViewDataActivity">
+    <item
+        android:title="Anterior"
+        android:icon="@drawable/arrowhead_left"
+        android:showAsAction="ifRoom|withText"
+        android:onClick="irAnterior"
+
+        />
+    <item
+        android:title="Siguiente"
+        android:onClick="irSiguiente"
+        android:icon="@drawable/arrowhead_right"
+        android:showAsAction="ifRoom|withText"></item>
+</menu>

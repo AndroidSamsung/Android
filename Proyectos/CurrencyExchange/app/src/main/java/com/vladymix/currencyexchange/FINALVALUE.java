@@ -10,6 +10,14 @@ public class FINALVALUE {
 
     public static final int ID_ACTIVIDAD_ADD_REG=4;
 
-    public static String PAIS = "Nombre_Pais";
+    public static final String PAIS = "Nombre_Pais";
     public static String BDDNAME= "infocurrencys";
+    public static final String NAME_FILE_SETTINGS="currency_settings.xml";
+
+    public static final String NOMBRE ="pais";
+    public static final String CURRENCY ="moneda";
+    public static final String RATIO ="valuecurrency";
+    public static final String NAME_CURRENCY ="namecurrency";
+    public static final String IDFLAG ="idflag";
+    public static final String IDFLAGCIRCLE ="idflagcircle";
 }

@@ -14,9 +14,16 @@
     <string name="tittle_checbox_divisa">Moneda de preferencia</string>
     <string name="summary_checbox_divisa">Empezar con una moneda preferente</string>
 
+    <string name="tittle_checbox_update">Actualizacion desde BCE</string>
+    <string name="summary_checbox_update">Actualizar automáticamente el ratio de divisas publicadas en el BCD</string>
+
+
     <string name="tittle_list">Selecione una moneda</string>
     <string name="sumary_list">Selecione una moneda disponible</string>
     <string name="title_activity_add_divisa">Añadir divisa</string>
+
+
+
     <string name="lb_Pais">Pais</string>
     <string name="lb_nombremoneda">Nombre de la moneda</string>
     <string name="lb_valorMoneda">Ratio de moneda</string>

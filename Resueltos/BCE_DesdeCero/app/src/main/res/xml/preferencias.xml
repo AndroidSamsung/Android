@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+                
+    <PreferenceCategory
+            android:title="@string/currency_category">
+
+        <EditTextPreference
+            	android:inputType="number" 
+            	android:maxLength="1"
+            	android:defaultValue="4"           	
+                android:key="decimal_digits_preference"
+                android:title="@string/decimal_title"
+                android:summary="@string/decimal_summary"
+                android:dialogTitle="@string/decimal_dialog_title" />
+
+            <ListPreference
+                android:title="@string/separator_title"
+                android:key="separator_digits_preference"
+                android:defaultValue="."
+                android:entries="@array/separatorEntries"
+                android:entryValues="@array/separatorValues"
+                android:summary="@string/separator_summary"
+                android:dialogTitle="@string/separator_dialog_title"/>
+
+    </PreferenceCategory>
+    
+</PreferenceScreen>

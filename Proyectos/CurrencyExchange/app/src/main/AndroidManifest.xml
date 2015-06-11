@@ -28,6 +28,17 @@
             android:name=".AddDivisaActivity"
             android:label="@string/title_activity_add_divisa" >
         </activity>
+
+        <service android:name=".utils.MyService"></service>
+
+        <receiver android:name=".utils.MyReceiver">
+            <intent-filter>
+                <action android:name="com.vladymix.currencyexchange.action.FIN"></action>
+                <action android:name="com.vladymix.currencyexchange.action.ERROR"></action>
+                <action android:name="com.vladymix.currencyexchange.NO_RECORD"></action>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.vladymix.currencyexchange;
 
+import com.vladymix.currencyexchange.utils.Pais;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * Created by Fabricio on 29/05/2015.
  */
 public class STATICVALUE {
-    public static List<Pais> ListaPaises;
+    public static ArrayList<Pais> ListaPaises;
 
     public static Pais getPaisbyName(String name){
         if(ListaPaises!=null){
@@ -20,29 +22,7 @@ public class STATICVALUE {
 
         return null;
     }
-    public static Pais getPaisbyCurrency(String currency){
-        if(ListaPaises!=null){
-            for(Pais item : ListaPaises){
-                if(item.getNameCurrency().equals(currency))
-                    return item;
-            }
-        }
-        else return null;
 
-        return null;
-    }
-    public static int getPositionPaisbyName(String name){
-        int i=0;
-        if(ListaPaises!=null){
-            for(Pais item : ListaPaises){
-                if(item.getNombre().equalsIgnoreCase(name))
-                    return i;
-                i++;
-            }
-        }
-        else return -1;
-        return -1;
-    }
     public static int getPositionPaisbyCurrecny(String currency){
         int i=0;
         if(ListaPaises!=null){
@@ -89,5 +69,29 @@ public class STATICVALUE {
         ListaPaises.add(new Pais("Singapur","SGD",1.5384,"Dolar", R.drawable.flag_sgd, R.drawable.circle_sgd));
         ListaPaises.add(new Pais("Tailandia","THB",36.786,"Baht", R.drawable.flag_thb, R.drawable.circle_thb));
         ListaPaises.add(new Pais("Surafrica","ZAR",13.2311,"Rand", R.drawable.flag_zar, R.drawable.circle_zar));
+    }
+
+    public static Pais getPaisbyCurrency(String currency){
+        if(ListaPaises!=null){
+            for(Pais item : ListaPaises){
+                if(item.getNameCurrency().equals(currency))
+                    return item;
+            }
+        }
+        else return null;
+
+        return null;
+    }
+    public static int getPositionPaisbyName(String name){
+        int i=0;
+        if(ListaPaises!=null){
+            for(Pais item : ListaPaises){
+                if(item.getNombre().equalsIgnoreCase(name))
+                    return i;
+                i++;
+            }
+        }
+        else return -1;
+        return -1;
     }
 }

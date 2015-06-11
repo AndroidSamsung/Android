@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.vladymix.currencyexchange.utils.CurrencySQLite;
+
 /**
  * Created by Fabricio on 03/06/2015.
  */

@@ -13,5 +13,8 @@
         android:onClick="selecctionCurrency"
         android:icon="@drawable/exchange_icon"
         />
-
+    <item android:title="Update"
+        android:onClick="updataSQLite"
+        android:icon="@drawable/exchange_icon"
+        />
 </menu>

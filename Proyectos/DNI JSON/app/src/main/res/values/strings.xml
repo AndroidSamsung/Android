@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DNI JSON</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_insertdni">Ingrese DNI</string>
+    <string name="title_activity_view_data">ViewDataActivity</string>
+
+
+    <string name="errorData">Error al procesar los datos</string>
+    <string name="errorAPI">Error en el acceso al API</string>
+    <string name="sinRegistros">La consulta no devuelve ningún registro</string>
+    <string name="conRegistros">La consulta devuelve %1$d registro/s</string>
+
+    <string name="msn_edited">Registro modificado</string>
+    <string name="msn_deleted">Registro eliminado</string>
+    <string name="msn_saved">Registro añadido</string>
+</resources>

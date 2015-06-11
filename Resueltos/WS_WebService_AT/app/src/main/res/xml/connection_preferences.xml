@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+	<PreferenceCategory
+		android:title="Datos de conectividad" 
+		android:summary="Datos necesarios para conectarse al servicio web" >
+  		<EditTextPreference 
+			android:key="servidor" 
+			android:title="URL Servidor" 
+			android:summary="Dirección del servidor al que se realizará la conexión"
+			android:dialogTitle="URL Servidor" 
+			android:dialogMessage="Introduce la dirección del servidor" />
+  		<EditTextPreference 
+			android:key="usuario" 
+			android:title="Usuario" 
+			android:summary="Usuario que realizará la conexión"
+			android:dialogTitle="Usuario" 
+			android:dialogMessage="Introduce un usuario válido" />
+  		<EditTextPreference 
+  		    android:inputType="textPassword"
+			android:key="clave" 
+			android:title="Palabra clave" 
+			android:summary="Clave del ususario que realizará la conexión"
+			android:dialogTitle="Clave" 
+			android:dialogMessage="Introduce la palabra clave" />
+  	</PreferenceCategory>
+</PreferenceScreen>

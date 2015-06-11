@@ -1,0 +1,85 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:10:5
+	android:name
+		ADDED from AndroidManifest.xml:10:22
+application
+ADDED from AndroidManifest.xml:12:5
+	android:label
+		ADDED from AndroidManifest.xml:15:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:13:9
+	android:icon
+		ADDED from AndroidManifest.xml:14:9
+	android:theme
+		ADDED from AndroidManifest.xml:16:9
+activity#samsung.ejemplos.basicwebservice.MainActivity
+ADDED from AndroidManifest.xml:17:9
+	android:label
+		ADDED from AndroidManifest.xml:19:13
+	android:name
+		ADDED from AndroidManifest.xml:18:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:20:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:21:17
+	android:name
+		ADDED from AndroidManifest.xml:21:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:22:17
+	android:name
+		ADDED from AndroidManifest.xml:22:27
+activity#samsung.ejemplos.basicwebservice.ViewDataActivity
+ADDED from AndroidManifest.xml:25:9
+	android:name
+		ADDED from AndroidManifest.xml:25:19
+service#samsung.ejemplos.basicwebservice.ConsultaFichasService
+ADDED from AndroidManifest.xml:26:3
+	android:exported
+		ADDED from AndroidManifest.xml:27:12
+	android:name
+		ADDED from AndroidManifest.xml:26:12
+receiver#samsung.ejemplos.basicwebservice.ConsultaFichasReceiver
+ADDED from AndroidManifest.xml:28:3
+	android:exported
+		ADDED from AndroidManifest.xml:30:7
+	android:name
+		ADDED from AndroidManifest.xml:29:7
+intent-filter#samsung.ejemplos.fichas.action.ERROR+samsung.ejemplos.fichas.action.FIN+samsung.ejemplos.fichas.action.NO_RECORD
+ADDED from AndroidManifest.xml:31:13
+action#samsung.ejemplos.fichas.action.FIN
+ADDED from AndroidManifest.xml:32:17
+	android:name
+		ADDED from AndroidManifest.xml:32:25
+action#samsung.ejemplos.fichas.action.ERROR
+ADDED from AndroidManifest.xml:33:17
+	android:name
+		ADDED from AndroidManifest.xml:33:25
+action#samsung.ejemplos.fichas.action.NO_RECORD
+ADDED from AndroidManifest.xml:34:17
+	android:name
+		ADDED from AndroidManifest.xml:34:25

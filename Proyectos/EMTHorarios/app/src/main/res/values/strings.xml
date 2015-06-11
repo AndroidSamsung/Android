@@ -17,7 +17,7 @@
     <string name="lb_tiempo_llegada">Tiempo de llegada</string>
     <string name="lb_minutos">minutos</string>
     <string name="lb_inmediaciones">en las inmediaciones</string>
-    <string name="title_activity_paradas">ParadasActivity</string>
+    <string name="title_activity_paradas">Paradas</string>
     <string name="lb_filter_stops">Ingrese número de parada</string>
     <string name="empty_stops">No se han encontrado paradas</string>
     <string name="lb_name">Nombre</string>
@@ -25,5 +25,12 @@
     <string name="title_activity_rute_maps">Map</string>
 
     <string name="msn_getStops">Cargando paradas</string>
+    <string name="empty_favorites">Lista de favoritos vacia</string>
+
+    <string name="lb_addfavorito">Añadir a favoritos</string>
+    <string name="lb_removefavorito">Eliminar de favoritos</string>
+    <string name="title_ubicacion">Ubicación</string>
+    <string name="title_direccion">Dirección</string>
+
 
 </resources>

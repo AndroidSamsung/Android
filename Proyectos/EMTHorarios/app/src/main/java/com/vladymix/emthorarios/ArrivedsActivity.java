@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vladymix.emthorarios.utils.Arrived;
+import com.vladymix.emthorarios.utils.BDD;
+import com.vladymix.emthorarios.utils.Favorito;
 import com.vladymix.emthorarios.utils.Linea;
 import com.vladymix.emthorarios.utils.Parada;
 import com.vladymix.emthorarios.utils.ProcessAsync;
@@ -29,6 +31,7 @@ public class ArrivedsActivity extends ListActivity {
     String idStop,name;
     List<Arrived> stopsArriveds;
     Parada parada;
+    BDD bdd;
 
     public static class ViewHolder{
         TextView visa_idLine;
@@ -73,18 +76,20 @@ public class ArrivedsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arriveds);
         LoadIntent();
+        bdd = BDD.getInstance();
+        bdd.setContext(this);
     }
 
     private void LoadIntent(){
         Bundle bundle = getIntent().getExtras();
         idStop = bundle.getString(FINALVALUE.STOP_IDSTOP);
         name =bundle.getString(FINALVALUE.STOP_NAME);
-
         getInfoStop(idStop);
-try {
-    getArrivedsStop(idStop);
-}catch (Exception ex){
-    Toast.makeText(this,ex.getMessage(),Toast.LENGTH_SHORT).show();}
+    try {
+        getArrivedsStop(idStop);
+    }
+    catch (Exception ex){
+        Toast.makeText(this,ex.getMessage(),Toast.LENGTH_SHORT).show();}
     }
 
     private void getInfoStop(String idStop){
@@ -96,7 +101,6 @@ try {
         ProcessAsync processAsync = new ProcessAsync(this,"Obteniendo informacion "+idStop,new callbackArrivedsStop());
         processAsync.execute("ARRIVEDSSTOP", idStop);
     }
-
 
     public class callbackInfoStop implements ResultadosURL {
 
@@ -211,6 +215,41 @@ return result;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_arriveds, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        Boolean exits = bdd.existStop(idStop);
+        if(exits) {
+           if( menu.findItem(R.id.menu_remove)==null){
+               menu.add(Menu.NONE, R.id.menu_remove, Menu.NONE, getString(R.string.lb_removefavorito));
+               menu.removeItem(R.id.menu_add);
+           }
+        }
+        else {
+            if(menu.findItem(R.id.menu_remove)!=null)
+                menu.removeItem(R.id.menu_remove);
+            if(menu.findItem(R.id.menu_add)==null)
+                menu.add(Menu.NONE, R.id.menu_add, Menu.NONE, getString(R.string.lb_addfavorito));
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_remove:
+               if(bdd.deleteStop(idStop))
+                   Toast.makeText(this,"Elemento eliminado", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.menu_add:
+                if(bdd.AgregarFavorito(new Favorito("Stop", String.valueOf(parada.getNode()), parada.getPostalAdress(), "Favorite Stop")))
+                    Toast.makeText(this, "Agregado correctamente",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void updateTimes(MenuItem menuItem){

@@ -114,4 +114,44 @@ public class ParseXML {
         return lineas;
     }
 
+    public  Linea getLinebyLabel(String label){
+        final String TAG = " [readXML_LINES] ";
+        List<Linea> lineas = new ArrayList<Linea>();
+        Document doc = null;
+        try {
+            InputStream source =context.getResources().openRawResource(R.raw.lines);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            dbf.setIgnoringElementContentWhitespace(true);
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(source);
+        } catch (IOException e) {
+            Log.d(TAG, e.getMessage());
+        } catch (ParserConfigurationException e) {
+            Log.d(TAG, e.getMessage());
+        } catch (SAXException e) {
+            Log.d(TAG, e.getMessage());
+        }
+        NodeList listaREG = doc.getElementsByTagName("REG");
+        Element elemento;
+        String NameA;
+        String NameB;
+        String Label;
+        String Line;
+        for(int i=0; i<listaREG.getLength(); i++) {
+            elemento = (Element)listaREG.item(i);
+            NameA = elemento.getElementsByTagName("NameA").item(0).getFirstChild().getNodeValue();
+            NameB = elemento.getElementsByTagName("NameB").item(0).getFirstChild().getNodeValue();
+            Label = elemento.getElementsByTagName("Label").item(0).getFirstChild().getNodeValue();
+            Line = elemento.getElementsByTagName("Line").item(0).getFirstChild().getNodeValue();
+            if(Label.equals(label)){
+                return new Linea(Line,Label, NameA, NameB);
+            }
+
+        }
+
+        return null;
+
+
+    }
+
 }

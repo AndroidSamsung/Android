@@ -1,21 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.vladymix.currencyexchange.CurrencySelectionActivity">
-    <item android:title="load from SQLite"
-
+    <item android:title="Update"
         android:showAsAction="never"
-        android:onClick="loadListFromSQLite"/>
+       />
 
-    <item android:title="load from XML"
-        android:icon="@drawable/circle_aud"
-        android:showAsAction="never"
-        android:onClick="loadListFromXML"/>
-
-
-    <item android:title="save XML to sqlite"
-        android:showAsAction="never"
-        android:onClick="savetoSQLite"/>
-    <item android:title="Load URL XML"
-        android:showAsAction="never"
-        android:onClick="loadURL"/>
 </menu>

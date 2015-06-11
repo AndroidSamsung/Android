@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Github/Samsung/Android/Resueltos/WS_BasicWebService_IS/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">Basic WebService</string>
+    <string name="consultaOK">Consulta finalizada</string>
+    <string name="dni">DNI</string>
+    <string name="errorAPI">Error en el acceso al API</string>
+    <string name="errorData">Error al procesar los datos</string>
+    <string name="infoDialogo">Realizando petición al API</string>
+    <string name="irAnterior">Registro anterior</string>
+    <string name="irInicio">Inicio</string>
+    <string name="irPrimero">Primer registro</string>
+    <string name="irSiguiente">Siguiente registro</string>
+    <string name="irUltimo">Último registro</string>
+    <string name="labelView2">Consulta de Registros</string>
+    <string name="realizarPeticion">realizar peticion</string>
+    <string name="sinRegistros">La consulta no devuelve ningún registro</string>
+    <string name="textView1">DNI</string>
+    <string name="textView2">Nombre</string>
+    <string name="textView3">Apellidos</string>
+    <string name="textView4">Dirección</string>
+    <string name="textView5">Teléfono</string>
+    <string name="textView6">Equipo</string>
+    <!-- From: file:/C:/Github/Samsung/Android/Resueltos/WS_BasicWebService_IS/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

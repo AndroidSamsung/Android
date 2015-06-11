@@ -1,12 +1,17 @@
 <resources>
 
-    <style name="color_azul">
+    <style name="ActionBar.Solid.Example" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/solid_primary</item>
+        <item name="android:backgroundStacked">@color/solid_primary</item>
+        <item name="android:backgroundSplit">@color/solid_primary</item>
+
     </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:windowTitleBackgroundStyle">@style/color_azul</item>
+
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Example</item>
     </style>
 
 </resources>

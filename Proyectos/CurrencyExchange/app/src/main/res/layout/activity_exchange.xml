@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="DATE"
-        android:id="@+id/textView"
+        android:id="@+id/textDateUpdate"
         android:gravity="center_horizontal"
         android:textColor="@color/solid_primary" />
     <View style="@style/line_div" />

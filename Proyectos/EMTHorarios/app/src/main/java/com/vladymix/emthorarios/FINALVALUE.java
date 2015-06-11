@@ -11,6 +11,7 @@ public class FINALVALUE {
     public static final int ID_ACTIVIDAD_LINEAS=2;
     public static final int ID_ACTIVIDAD_PARADAS=2;
     public static final int ID_ACTIVIDAD_INFO_LINE=3;
+    public static final int ID_ACTIVIDAD_ARRIVEDS=4;
 
     public static final String ACTIVIDAD_FAVORITOS="ACTIVIDAD_FAVORITOS";
     public static final String ACTIVIDAD_LINEAS = "ACTIVIDAD_LINEAS";
