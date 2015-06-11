@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">EuroRates to SQLite</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="data_loaded">BBDD Inicializada</string>
-    <string name="no_data">Sin información</string>
-    <string name="buscar">buscar moneda</string>
-</resources>

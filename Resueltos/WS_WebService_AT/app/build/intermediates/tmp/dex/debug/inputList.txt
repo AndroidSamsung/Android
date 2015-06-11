@@ -1,1 +1,0 @@
-C:\Users\Profesor\Documents\Desarrollo\Android\android_studio_workspace\WS_WebService_AT\app\build\intermediates\classes\debug

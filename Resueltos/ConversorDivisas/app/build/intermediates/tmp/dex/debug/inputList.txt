@@ -1,1 +1,0 @@
-C:\Users\Profesor\Documents\Desarrollo\Android\android_studio_workspace\ConversorDivisas\app\build\intermediates\classes\debug
